@@ -1,0 +1,27 @@
+server:
+  tomcat:
+    threads:
+      max: 200
+    accept-count: 500
+    max-connections: 8192
+
+payment:
+  providers:
+    apple-pay-url: https://apple-pay.pravin.com
+    google-pay-url: https://google-pay.pravin.com
+    zelle-pay-url: https://zelle-pay.pravin.com
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+        payment.downstream.duration: true
